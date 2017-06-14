@@ -15,10 +15,8 @@ class SignIn extends Component{
       username: this.userName.value,
       password: this.passWord.value
     }
-    axios.post('http://petapi.haoduoshipin.com/user/signin', data).then(res => {
-      console.log(res.data);
-    })
-    .catch(err => console.log(err))
+    axios.post('http://petapi.haoduoshipin.com/user/signin',data)
+    .then(res => alert(res.data.msg))
   }
   render(){
     console.log(this.userName);

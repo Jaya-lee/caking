@@ -12,6 +12,7 @@ class Pop extends Component {
   }
 
   render() {
+    console.log(this.props);
     return(
       <div
       style={this.props.popList ? { display: 'block' } : { display: 'none' }} className="bottom-list">

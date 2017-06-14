@@ -16,9 +16,9 @@ class SignUp extends Component {
       username: this.userName.value,
       password: this.passWord.value
     }
-    axios.post('http://petapi.haoduoshipin.com/user/signup', data).then(res => {
-      console.log(res.data);
-    })
+    axios.post('http://petapi.haoduoshipin.com/user/signup', data)
+    .then(res => alert(res.data.msg))
+    .catch(err => alert('用户名重复，请重新注册'))
   }
 
   render() {
@@ -31,7 +31,7 @@ class SignUp extends Component {
             <input type="password" placeholder="再次输入" />
             <div className='finish'>
               <input onClick={this.props.showList} className="none" value="取消" type="submit" />
-              <input className="submit" value="注册" type="submit" />\
+              <input className="submit" value="注册" type="submit" />
             </div>
           </form>
         </div>

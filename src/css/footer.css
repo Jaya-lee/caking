@@ -7,13 +7,13 @@
   left:0;
   z-index: 20;
   width:100%;
-  height:9vh;
-  background: #eaeaea;
+  background: rgba(246,246,246,0.95);
   border-top: 1px solid #BDBEC2;
 }
 .footer>div{
   font-size: 0.14rem;
   text-align: center;
+  margin-top: 0.2rem;
 }
 .footer>div>a{
   display: flex;

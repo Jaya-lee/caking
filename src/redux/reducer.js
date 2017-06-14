@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux'
+//弹窗pop
 let showList=false
-
 function listReducer (state=showList,action){
   switch(action.type){
     case 'TOP' : return !state
@@ -21,10 +21,20 @@ function signInReducer (state=signIn,action){
     default : return false
   }
 }
+//商铺信息
 
+let shops=[]
+function shopReducer (state=shops,action){
+  switch(action.type){
+    case 'ALL' : return action.shopList
+    case 'SEARCH': return action.shopList
+    default : return state
+  }
+}
 const rootReducer =combineReducers({
   popList:listReducer,
   signUp:signUpReducer,
-  signIn:signInReducer
+  signIn:signInReducer,
+  shopList:shopReducer
 })
 export default rootReducer

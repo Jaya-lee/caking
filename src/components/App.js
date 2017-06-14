@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router,Route} from 'react-router-dom'
+import { BrowserRouter as Router,Route} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import store from '../redux/store'
 
-
 import Home from '../Home/Home'
+import Search from '../Home/Search'
+
 import Order from '../Order/Order'
 import Mine from '../Mine/Mine'
 
@@ -15,9 +16,10 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Router>
+        <Router >
           <div className="App">
             <Route exact path='/' component={Home}/>
+            <Route path='/home/search' component={Search}/>
             <Route path='/order' component={Order}/>
             <Route path='/mine' component={Mine}/>
             <Footer/>

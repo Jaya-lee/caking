@@ -3,6 +3,7 @@ body,html{
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background: #efefef;;
 }
 
 /*登录注册*/
@@ -67,4 +68,22 @@ body,html{
 }
 .signup-form .finish .none {
   background: #ccc;
+}
+
+.shopbox{
+  margin-top: 0.4rem;
+  font-size: 0.34rem;
+  display: flex;
+  flex-direction: column;
+}
+.shop{
+  display: flex;
+  line-height: 1rem;
+  background:url(../img/quan.svg) no-repeat 0.2rem 0.3rem;
+  -webkit-background-size: 0.96rem;
+  background-size: 0.96rem;
+  border-top: 1px solid #ccc;
+  margin-top: 0.3rem;
+  padding-top: 0.3rem;
+  padding-left: 1.5rem;
 }

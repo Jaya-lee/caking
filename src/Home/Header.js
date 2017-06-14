@@ -2,9 +2,21 @@ import React, { Component } from 'react';
 import {Icon} from 'antd'
 import '../css/header.css'
 import {Link} from 'react-router-dom'
+
+
+// import {hashHistory} from 'react-router'
+
 class Header extends Component{
+  constructor(){
+    super();
+    this.handleClick=this.handleClick.bind(this)
+  }
+  
+  handleClick(){
+    // hashHistory.push('/home/search')
+  }
   render(){
-    return (  
+      return (
         <div className='home-header'>
           <div className='top'>
             <div  className='position'>
@@ -14,11 +26,13 @@ class Header extends Component{
             </div>
             <form  className='search'>
               <Icon type="search" />
-              <input placeholder='请输入商家或者商品名称'/>
+              <input onClick={this.handleClick} placeholder='请输入商家或者商品名称'/>
             </form>
           </div>
+
         </div>
     )
   }
 }
+
 export default Header
