@@ -22,7 +22,6 @@ function signInReducer (state=signIn,action){
   }
 }
 //商铺信息
-
 let shops=[]
 function shopReducer (state=shops,action){
   switch(action.type){
@@ -31,6 +30,7 @@ function shopReducer (state=shops,action){
     default : return state
   }
 }
+
 const rootReducer =combineReducers({
   popList:listReducer,
   signUp:signUpReducer,

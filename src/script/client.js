@@ -1,1 +1,1 @@
-  (function(){document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.68 + "px";})()
+  (function(){document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 + "px";})()

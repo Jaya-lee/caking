@@ -1,0 +1,101 @@
+
+/*搜索*/
+.home-header{
+  width: 100%;
+  height: 1.8rem;
+  background:url(../img/banner.jpg) no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+.top{
+  display: flex;
+  padding: 0 0.08rem;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.1rem;
+}
+.position,.search{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 0.26rem;
+  padding: 0 0.08rem;
+  color: #ffffff;
+  font-size: 0.16rem;
+  background: rgba(0,0,0,0.3);
+  -webkit-border-radius: 0.17rem;
+  -moz-border-radius: 0.17rem;
+  border-radius: 0.17rem;
+}
+.position{
+  width: 38%;
+}
+.position span{
+  display: inline-block;
+  text-overflow: ellipsis;
+  max-width: 2rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.search{
+  width: 55%;
+  background: #fff;
+  color: #333;
+}
+.search input{
+  background:none;
+  outline: 0;
+  border: 0;
+  width: 92%;
+}
+/*分类*/
+.classify{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.2rem 0;
+  background: #fff;
+}
+.classify> a{
+  width: 25% ;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  color: #2f2f2f;
+  text-align: center;
+  font-size: 0.16rem;
+}
+.classify >a >span.icon{
+  display: block;
+  width: 100%;
+  height:0.5rem;
+  background:url(../img/quan.svg) no-repeat center;
+  margin-bottom: 0.05rem;
+}
+/*商家*/
+
+.shoptop{
+  height: 0.3rem;
+  display: flex;
+  align-items: center;
+}
+.shoptop span{
+  display: inline-block;
+  height: 0.16rem;
+  font-size: 0.14rem;
+  padding-left: 0.15rem;
+  border-left: 3px solid #ffd705;
+  color: #656565;
+}
+.shopbox{
+  font-size: 0.14rem;
+  display: flex;
+  flex-direction: column;
+}
+.shop{
+  display: flex;
+  height: 0.87rem;
+  background:#fff ;
+  margin-bottom: 0.1rem;;
+}
