@@ -22,6 +22,11 @@ li {
 a{
   text-decoration: none;
 }
+input{
+  border: 0;
+  outline: 0;
+  background:none;
+}
 /*整体一个大的布局*/
 
 .app{
@@ -45,7 +50,7 @@ a{
   align-items: center;
   background:#ffd705;
 }
-/*search,sign覆盖掉header和footer*/
+/*search,sign覆盖掉复用header*/
 .absolute{
   width: 100%;
   position: absolute;

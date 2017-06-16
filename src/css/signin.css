@@ -1,0 +1,82 @@
+.app .header{
+  justify-content: flex-start;
+  padding-left: 0.2rem;
+  border-bottom: .02rem solid #ccc;
+  color: #444;
+  background: #fff;
+}
+.form-box>li{
+  background: #fff;
+}
+.tab{
+  display: flex;
+}
+.tab > span{
+  box-sizing: border-box;
+  display: inline-block;
+  width: 50%;
+  height: 0.4rem;
+  line-height: 0.4rem;
+  text-align: center;
+  font-size: 0.18rem;
+  border-bottom: .02rem solid #DDD8CE;
+  background: #f9f9f9;
+  color: #656565;
+}
+.tab > span:first-child{
+  border-right: .02rem solid #DDD8CE;
+}
+.tab .active{
+  border-bottom: .02rem solid #fff;
+  background: #fff;
+  color: #000;
+}
+.form-box{
+  display: flex;
+  flex-direction: column;
+}
+.form-box >li{
+  display: flex;
+  height: 0.5rem;
+  border-bottom: 0.01rem solid #DDD8CE;
+  padding: 0 0.16rem;
+  font-size: 0.14rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-box >li >input{
+  flex-grow: 1;
+  font-size: 0.18rem;
+  padding-left: 0.04rem;
+}
+.finish>input{
+  background: #fdc900;
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  height: 0.4rem;
+  font-size: 0.18rem;
+  justify-content: center;
+  color: #6b450a;
+  margin-top: 0.2rem;
+  border-radius: 0.05rem;
+}
+.finish a{
+  color: #6b450a;
+  font-size: 0.14rem;
+  float: right;
+  margin: 0.1rem 0.2rem 0 0;
+}
+.footer.sign-footer{
+  background: none;
+  border: 0;
+  position: fixed;
+  bottom:0;
+  font-size: 0.12rem;
+   color:#898989;
+   align-items: flex-start;
+}
+.sign-footer a{
+  text-decoration: underline;
+  color: #6b450a;
+}
