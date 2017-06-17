@@ -12,7 +12,7 @@ import Search from '../Home/Search'
 import Order from '../Order/Order'
 
 import Mine from '../Mine/Mine'
-import SignIn from '../Mine/SignIn'
+import Sign from '../Mine/Sign'
 
 class App extends Component {
   render() {
@@ -25,7 +25,7 @@ class App extends Component {
               <Route exact path='/' component={Home}/>
               <Route path='/home/search' component={Search}/>
               <Route path='/order' component={Order}/>
-              <Route path='/mine/signin' component={SignIn}/>
+              <Route path='/mine/sign' component={Sign}/>
               <Route path='/mine' component={Mine}/>
             </Switch>
             <Footer/>

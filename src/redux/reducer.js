@@ -1,29 +1,32 @@
 import {combineReducers} from 'redux'
-//弹窗pop
-let showList=false
-function listReducer (state=showList,action){
+
+//登录
+function signInReducer (state=false,action){
   switch(action.type){
-    case 'TOP' : return !state
+    case 'SIGNIN' : return true
     default : return state
   }
 }
-let signUp=false
-function signUpReducer (state=signUp,action){
+//注册
+function signUpReducer (state=false,action){
   switch(action.type){
-    case 'SHOWUP' : return true
-    default : return false
+    case 'SIGNUP' : return true
+    default : return state
   }
 }
-let signIn=false
-function signInReducer (state=signIn,action){
-  switch(action.type){
-    case 'SHOWIN' : return true
-    default : return false
+//本地存储登录状态
+function userReducer(state='',action){
+  switch (action.type) {
+    case 'USER':
+      return action.user
+    default:
+      return state
   }
 }
+
 //商铺信息
-let shops=[]
-function shopReducer (state=shops,action){
+
+function shopReducer (state=[],action){
   switch(action.type){
     case 'ALL' : return action.shopList
     case 'SEARCH': return action.shopList
@@ -32,9 +35,9 @@ function shopReducer (state=shops,action){
 }
 
 const rootReducer =combineReducers({
-  popList:listReducer,
-  signUp:signUpReducer,
-  signIn:signInReducer,
-  shopList:shopReducer
+  shopList:shopReducer,
+  signin:signInReducer,
+  signup:signUpReducer,
+  user:userReducer
 })
 export default rootReducer

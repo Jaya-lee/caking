@@ -1,20 +1,18 @@
 import React,{Component} from 'react'
-import axios from 'axios'
 import '../css/signin.css'
 
 import {connect} from 'react-redux'
-import {showList,showSignIn} from '../redux/actions/showAction'
+import {signIn,signUp} from '../redux/actions/showAction'
 
 import {Icon} from 'antd'
 
-class SignIn extends Component{
+class Sign extends Component{
   constructor(){
-    super();
-    this.logIn=this.logIn.bind(this)
+    super()
     this.handleClick=this.handleClick.bind(this)
     this.handleChange=this.handleChange.bind(this)
     this.handleClose=this.handleClose.bind(this)
-    this.handleOpen=this.handleOpen.bind(this)
+    this.handleSubmit=this.handleSubmit.bind(this)
 
     this.state={
       sign:'登录',
@@ -30,9 +28,7 @@ class SignIn extends Component{
       sign:newSign,
       username:'',
       password:'',
-      again:'',
-      opacity:0
-
+      again:''
     })
   }
 
@@ -48,25 +44,29 @@ class SignIn extends Component{
     })
   }
 
-  logIn(e){
+  handleSubmit(e){
     e.preventDefault()
-    let data = {
-      username: this.userName.value,
-      password: this.passWord.value
-    }
-    axios.post('http://petapi.haoduoshipin.com/user/signin',data)
-    .then(res => alert(res.data.msg))
+    let username = this.state.username
+    let password = this.state.password
+    let again = this.state.again
+    let data={username,password}
+    if(username.trim() && password.trim()){
+        if(this.state.sign==='登录'){
+              this.props.signIn(data)
+            }else{
+              this.props.signUp(data)
+            }
+      }else(alert('用户名，密码不允许为空'))
   }
   render(){
     let styleClose={
       fontSize:'0.16rem',
       color:'#aaa',
-      marginLeft:'-0.2rem',
-      opacity:this.state.opacity
+      marginLeft:'-0.2rem'
     }
     return(
-      <div>
-          <form onSubmit={this.logIn} className='main'>
+      <div　className='main'>
+          <form onSubmit={this.handleSubmit}>
             <div className='tab'>
               <span className={this.state.sign==='登录'　? 'active' : ''}
                 onClick={this.handleClick}>登录</span>
@@ -77,17 +77,15 @@ class SignIn extends Component{
               <li>
                 <Icon type="user"  style={{fontSize:'0.2rem',color:'#333'}}/>
                 <input onChange={this.handleChange} value={this.state.username}
-                  onFocus={this.handleOpen}
                   type="text" placeholder="请输入用户名"  name='username'/>
                 {this.state.username.length===0 ? null  : <Icon type="close-circle" style={styleClose} name='username' onClick={this.handleClose}/>}
               </li>
               <li>
                 <Icon type="lock" style={{fontSize:'0.2rem',color:'#333'}} />
                 <input onChange={this.handleChange} value={this.state.password}
-                  onFocus={this.handleOpen}
                   type="password" placeholder="请输入密码" name='password'/>
-                <Icon type="close-circle" style={styleClose} name='password'
-                onClick={this.handleClose}/>
+                {this.state.password.length===0 ? null  : <Icon type="close-circle" style={styleClose} name='password'
+                onClick={this.handleClose}/>}
               </li>
             {
               this.state.sign==='注册'　?
@@ -96,12 +94,10 @@ class SignIn extends Component{
                 <input onChange={this.handleChange} value={this.state.again}
                   onFocus={this.handleOpen}
                   type="password" placeholder="再次输入密码" name='again'/>
-                <Icon type="close-circle" style={styleClose} name='again'
-                onClick={this.handleClose}/>
+                {this.state.again.length===0 ? null  : <Icon type="close-circle" style={styleClose} name='again'
+                onClick={this.handleClose}/>}
               </li> : ''
-
               }
-
               <div className='finish'>
                 <input className="submit" value={this.state.sign} type="submit" />
                   {this.state.sign==='登录' ? <a>忘记密码</a> : ''}
@@ -117,5 +113,7 @@ class SignIn extends Component{
   }
 }
 const mapStoreToProps = (state) =>({
+  signin:state.signin,
+  signup:state.signup
 })
-export default connect(mapStoreToProps,{showList,showSignIn})(SignIn)
+export default connect(mapStoreToProps,{signIn,signUp})(Sign)

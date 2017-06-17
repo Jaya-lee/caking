@@ -14,3 +14,5 @@ overflow:hidden; 隐藏
 ```
 q1:innerHTML innerText
 q2:e.taget只要span
+
+connect null
