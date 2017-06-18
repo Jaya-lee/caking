@@ -1,29 +1,27 @@
 import {combineReducers} from 'redux'
 
-//登录
-function signInReducer (state=false,action){
-  switch(action.type){
-    case 'SIGNIN' : return true
-    default : return state
-  }
-}
-//注册
-function signUpReducer (state=false,action){
-  switch(action.type){
-    case 'SIGNUP' : return true
-    default : return state
-  }
-}
-//本地存储登录状态
+//读取用户
 function userReducer(state='',action){
   switch (action.type) {
-    case 'USER':
-      return action.user
-    default:
-      return state
+    case 'USER': return action.user
+    default: return state
+  }
+}
+//github头像
+function picReducer(state='',action){
+  switch (action.type) {
+    case 'GITHUB_PIC': return action.pic
+    default : return state
   }
 }
 
+//header标题
+function titleReducer(state='',action){
+  switch (action.type) {
+    case 'CHANGETITLE': return action.title
+    default : return state
+  }
+}
 //商铺信息
 
 function shopReducer (state=[],action){
@@ -36,8 +34,8 @@ function shopReducer (state=[],action){
 
 const rootReducer =combineReducers({
   shopList:shopReducer,
-  signin:signInReducer,
-  signup:signUpReducer,
-  user:userReducer
+  user:userReducer,
+  title:titleReducer,
+  pic:picReducer
 })
 export default rootReducer

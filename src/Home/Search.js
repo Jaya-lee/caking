@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
 import '../css/search.css'
 class Search extends Component{
   constructor(){
-    super();
+    super()
     this.handleSubmit=this.handleSubmit.bind(this)
     this.handleChange=this.handleChange.bind(this)
     this.handleClick=this.handleClick.bind(this)

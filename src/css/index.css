@@ -59,3 +59,27 @@ input{
   display: flex;
   flex-direction: column;
 }
+/*没登录的样式*/
+.login{
+  display: flex;
+  color: #ccc;
+  font-size: 0.14rem;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 35%;
+}
+.login img{
+  width: 1rem;
+  height: 1rem;
+  margin: 0 auto;
+}
+.login a{
+  display:block;
+  width:0.6rem;
+  height: 0.3rem;
+  color: #333;
+  background: #ffd705;
+  text-align: center;
+  line-height: 0.3rem;
+  margin: 0.2rem auto;
+}

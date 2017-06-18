@@ -56,9 +56,11 @@ class Sign extends Component{
             }else{
               this.props.signUp(data)
             }
+          if(this.props.user){this.props.history.push('/mine')}
       }else(alert('用户名，密码不允许为空'))
   }
   render(){
+
     let styleClose={
       fontSize:'0.16rem',
       color:'#aaa',
@@ -113,7 +115,6 @@ class Sign extends Component{
   }
 }
 const mapStoreToProps = (state) =>({
-  signin:state.signin,
-  signup:state.signup
+  user:state.user
 })
 export default connect(mapStoreToProps,{signIn,signUp})(Sign)

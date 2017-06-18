@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import {Icon} from 'antd'
 import ExitPop from './ExitPop'
 import '../css/mine.css'
+import img from '../img/kangaroo.png'
 class Mine extends Component {
   constructor(){
     super()
@@ -13,30 +14,52 @@ class Mine extends Component {
     }
   }
   componentWillMount(){
+    //title
+    this.props.dispatch({type:'CHANGETITLE',title:'我的'})
+    //判断是否登录并展示个人信息
       if (!localStorage.userid) {
         localStorage.userid = JSON.stringify([])
       }else if(JSON.parse(localStorage.userid).length){
-
       let userid = JSON.parse(localStorage.userid)[0]
       axios.get(`http://petapi.haoduoshipin.com/user/${userid}`)
-      .then(res => this.props.dispatch({type:'CURRENTUSER',currentUser:res.data.user.username}))
+      .then(res => this.props.dispatch({type:'USER',user:res.data.user.username}))
     }
-}
-handleClick(){
-  this.setState({
-    exit:!this.state.exit
-  })
-}
+  }
+  componentDidMount(){
+    //从github获取头像
+      axios.get(`https://api.github.com/users/${this.props.user}`)
+      .then(res => {
+        this.props.dispatch({type:'GITHUB_PIC',pic:res.data.avatar_url})
+      })
+      .catch(err => console.log(err))
+  }
+  ensure(){
+    this.setState({exit:!this.state.exit})
+    this.props.dispatch({type:'USER',user:''})
+    this.props.dispatch({type:'GITHUB_PIC',pic:''})
+    localStorage.removeItem('userid')
+  }
+  cancel(){
+    this.setState({
+      exit:!this.state.exit
+    })
+  }
   render() {
+    let pic=this.props.pic
     return(
       <div className="main">
-        <div className='mine'>
-          <ul className="ucenter-content">
-            <li>
-              <Link to="/user/address">
-              <Icon type="edit" />
-              <span>收货地址管理</span>
-              <Icon type="right" />
+        {this.props.user ?
+          <div className='mine'>
+            <div className='picture'>
+              <img src={pic ? pic : img} alt=''/>
+              <span>{this.props.user}</span>
+            </div>
+            <ul className="ucenter-content">
+              <li>
+                <Link to="/user/address">
+                <Icon type="edit" />
+                <span>收货地址管理</span>
+                <Icon type="right" />
               </Link>
             </li>
             <li>
@@ -63,18 +86,30 @@ handleClick(){
             </li>
             <li>
               <a href=''>
-              <Icon type="phone" />
-              <span>客服电话</span>
-            </a>
+                <Icon type="phone" />
+                <span>客服电话：10109777</span>
+              </a>
             </li>
           </ul>
-          {this.state.exit ? <ExitPop cancel={this.headerClick.bind(this)} ensure={this.ensure.bind(this)} val='退出后将无法查看当前订单，确定退出吗？'/> : null}
-          <div onClick={this.handleClick.bind(this)} className="ucenter-exit">退出登录</div>
-        </div>
+          <div onClick={this.cancel.bind(this)} className="ucenter-exit">退出登录</div>
+          {this.state.exit ?
+            <ExitPop ensure={this.ensure.bind(this)}
+              cancel={this.cancel.bind(this)}
+              val='退出后将无法查看当前订单，确定退出吗？'/> : null}
+          </div>
+          :
+          <div　className='login'>
+            <img src={img} alt=''/>
+            <span>您还没有登录，请先登录哦～～</span>
+            <Link to='/mine/sign'>登录</Link>
+          </div>
+        }
     </div>
     )
   }
 }
-// const mapStoreToProps = (state) =>({
-// })
-export default connect(null)(Mine)
+const mapStoreToProps = (state) =>({
+  user:state.user,
+  pic:state.pic
+})
+export default connect(mapStoreToProps)(Mine)

@@ -1,12 +1,30 @@
+
 .mine{
   display: flex;
   background: #fff;
   flex-direction: column;
 }
+.picture{
+  height: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 0.14rem;
+  margin-top: 0.2rem;
+}
+.picture img{
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: #efefef;
+
+}
 .ucenter-content{
   line-height: 0.46rem;
   padding: 0 0.14rem;
   border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
 }
 .ucenter-content li{
   border-bottom: 1px solid #ccc;

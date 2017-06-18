@@ -14,8 +14,9 @@ class ExitPop extends React.Component{
       position:'absolute',
       top:0,bottom:0,left:0,right:0,
       margin:'auto',
-      borderRadius:'4px',
-      textAlign:'center'
+      borderRadius:'0.04rem',
+      textAlign:'center',
+      fontSize:'0.14rem'
     }
     let pSty = {
       margin:'0.14rem 0.2rem',
@@ -23,7 +24,6 @@ class ExitPop extends React.Component{
     }
     let smallDiv = {
       width:'49.99%',
-      float:'left',
       borderTop:'1px solid #ccc',
       lineHeight:'0.48rem',
       color:'#0fc3ae'
@@ -32,7 +32,7 @@ class ExitPop extends React.Component{
       <div style={largeDiv}>
         <div style={middleDiv}>
           <p style={pSty}>{this.props.val}</p>
-          <div>
+          <div style={{display:'flex'}}>
             <div style={{...smallDiv,borderRight:'1px solid #ccc'}} onClick={()=>this.props.ensure()}>确定</div>
             <div style={smallDiv} onClick={()=>this.props.cancel()}>取消</div>
           </div>
