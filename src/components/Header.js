@@ -12,16 +12,18 @@ class Header extends Component{
   }
   render(){
     let pathname=this.props.location.pathname
+
     return(
         <div className='header'>
           {
-            pathname==='/'|| pathname==='/order' || pathname==='/mine' ? '' :
+            pathname==='/'|| pathname==='/order' || pathname==='/mine' ?
+              <span>{this.props.title}</span>
+             :
             <div className='header-sign'>
-              <Icon type="rollback" style={{fontSize:'0.22rem'}} onClick={this.handleClick}/>
-              <span>登录</span>
+              <Icon type="rollback" onClick={this.handleClick}/>
+              <span>{this.props.title}</span>
             </div>
           }
-          <span>{this.props.title}</span>
         </div>
     )
   }

@@ -98,4 +98,8 @@
   height: 0.87rem;
   background:#fff ;
   margin-bottom: 0.1rem;;
+  align-items: center;
+  font-size: 0.16rem;
+  padding-left: 0.5rem;
+  color: #444;
 }

@@ -32,6 +32,15 @@ function shopReducer (state=[],action){
   }
 }
 
+//订单信息
+
+function orderReducer (state=[],action){
+  switch(action.type){
+    case 'ALLORDERS' : return action.orders
+    default : return state
+  }
+}
+
 const rootReducer =combineReducers({
   shopList:shopReducer,
   user:userReducer,

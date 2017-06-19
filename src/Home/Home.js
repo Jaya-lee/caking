@@ -6,11 +6,15 @@ import '../css/home.css'
 
 import {allShop} from '../redux/actions/shopAction'
 import {connect} from 'react-redux'
-
+import {Link} from 'react-router-dom'
+import store from '../redux/store'
 class Home extends Component{
+
   componentWillMount(){
+    store.dispatch({type:'CHANGETITLE',title:'首页'})
     this.props.allShop()
   }
+
   render(){
     return (
       <div className='main'>
@@ -20,10 +24,11 @@ class Home extends Component{
         <ul className='shopbox'>
         {
           this.props.shopList.map(item =>
-            <li className='shop' key={Math.random()}>
-              <img alt=''/>
+            <Link to={{pathname:`/home/class/${item._id}` ,name:item.name,id:item._id}}
+            className='shop' key={Math.random()}>
+              <img src={item.poster} alt=''/>
               <span>{item.name}</span>
-            </li>
+            </Link>
           )
         }
       </ul>

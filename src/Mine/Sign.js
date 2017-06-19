@@ -48,15 +48,15 @@ class Sign extends Component{
     e.preventDefault()
     let username = this.state.username
     let password = this.state.password
-    let again = this.state.again
+    // let again = this.state.again
     let data={username,password}
     if(username.trim() && password.trim()){
         if(this.state.sign==='登录'){
-              this.props.signIn(data)
+              this.props.signIn(data,this.props.history.push)
             }else{
-              this.props.signUp(data)
+              this.props.signUp(data,this.props.history.push)
             }
-          if(this.props.user){this.props.history.push('/mine')}
+          // if(this.props.user){this.props.history.push('/mine')}
       }else(alert('用户名，密码不允许为空'))
   }
   render(){
@@ -67,8 +67,13 @@ class Sign extends Component{
       marginLeft:'-0.2rem'
     }
     return(
-      <div　className='main'>
-          <form onSubmit={this.handleSubmit}>
+
+      <div className='absolute'>
+        <div className='header-sign'>
+          <Icon type="rollback" style={{fontSize:'0.22rem'}} onClick={this.handleClick}/>
+          <span>{this.state.sign}</span>
+        </div>
+          <form onSubmit={this.handleSubmit} className='main'>
             <div className='tab'>
               <span className={this.state.sign==='登录'　? 'active' : ''}
                 onClick={this.handleClick}>登录</span>
@@ -111,6 +116,7 @@ class Sign extends Component{
             </div>
           </form>
       </div>
+
     )
   }
 }

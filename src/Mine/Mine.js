@@ -16,23 +16,8 @@ class Mine extends Component {
   componentWillMount(){
     //title
     this.props.dispatch({type:'CHANGETITLE',title:'我的'})
-    //判断是否登录并展示个人信息
-      if (!localStorage.userid) {
-        localStorage.userid = JSON.stringify([])
-      }else if(JSON.parse(localStorage.userid).length){
-      let userid = JSON.parse(localStorage.userid)[0]
-      axios.get(`http://petapi.haoduoshipin.com/user/${userid}`)
-      .then(res => this.props.dispatch({type:'USER',user:res.data.user.username}))
-    }
-  }
-  componentDidMount(){
-    //从github获取头像
-      axios.get(`https://api.github.com/users/${this.props.user}`)
-      .then(res => {
-        this.props.dispatch({type:'GITHUB_PIC',pic:res.data.avatar_url})
-      })
-      .catch(err => console.log(err))
-  }
+}
+
   ensure(){
     this.setState({exit:!this.state.exit})
     this.props.dispatch({type:'USER',user:''})
